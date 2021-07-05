@@ -9,3 +9,6 @@ Get all domain admins:
 
 Get-NetGroup -GroupName "Domain Admins" -FullData
 
+Tail a file and have a keyword hightlighted:
+
+tail -f alerts.json | perl -pe 's/keyword/\e[1;31;43m$&\e[0m/g'
