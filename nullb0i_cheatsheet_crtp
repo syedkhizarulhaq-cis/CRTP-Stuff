@@ -20,3 +20,7 @@ net localgroup administrators
 Temporarly disable windows defender if you have administrator priveleges:
 
 Set-MpPreference -DisableRealtimeMonitoring $true
+
+To find local admin privelges for your current user using PowerView:
+
+Find-LocalAdminAccess -Verbose
