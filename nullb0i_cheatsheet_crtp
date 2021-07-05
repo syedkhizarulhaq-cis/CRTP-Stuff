@@ -16,3 +16,7 @@ tail -f alerts.json | perl -pe 's/keyword/\e[1;31;43m$&\e[0m/g'
 Get all users with local admin privileges:
 
 net localgroup administrators
+
+Temporarly disable windows defender if you have administrator priveleges:
+
+Set-MpPreference -DisableRealtimeMonitoring $true
