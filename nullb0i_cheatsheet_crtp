@@ -46,6 +46,9 @@ To find out what language mode is powershell running on:
 $ExecutionContext.SessionState.LanguageMode #type in powershell (Constrained language mode or Full language mode)
 #if applocker is configured powershell will run in constrained language mode
 
+#Enumerate applocker policy:
+Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
+
 Dump Credentials on a local machine:
 Invoke-Mimikatz -DumpCreds
 
