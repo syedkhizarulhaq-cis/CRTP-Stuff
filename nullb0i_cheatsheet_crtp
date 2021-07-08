@@ -32,6 +32,8 @@ PS C:\AD\Tools> Enter-PSSession -ComputerName dcorp-adminsrv.dollarcorp.moneycor
 lateral movement using powershell remoting(one to one remoting):
 Enter-PSSession -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local #we had admin rights on this box
 
+$sess=New-PSSession -ComputerName dcorp-mgmt.dollarcorp.moneycorp.local
+
 One to Many remoting or Fan-out Remoting:
 Invoke-Command -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local -ScriptBlock{whoami;hostname} #For executing commands on multiple remote computers
 
