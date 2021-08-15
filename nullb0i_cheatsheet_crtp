@@ -1,3 +1,18 @@
+###Enumeration
+
+To Get current domain: 
+GetNetDomain (PowerView)
+Get-ADDomain (ActiveDirectory Module)
+
+Get object of another domain
+Get-NetDomain -Domain moneycorp.local (PowerView)
+Get-ADDomain -Identity moneycorp.local (ActiveDirectory Module)
+
+Getdomain SID for the current domain
+GetDomainSID (PowerView)
+(Get-ADDomain).DomainSID (ActiveDirectory Module)
+
+
 To bypass windows AMSI:
 
 powershell -ep bypass
