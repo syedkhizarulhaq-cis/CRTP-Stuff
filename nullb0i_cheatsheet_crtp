@@ -1,15 +1,18 @@
-###Enumeration
+###Domain Enumeration
 
 To Get current domain: 
 Get-NetDomain (PowerView)
+
 Get-ADDomain (ActiveDirectory Module)
 
 Get object of another domain
 Get-NetDomain -Domain moneycorp.local (PowerView)
+
 Get-ADDomain -Identity moneycorp.local (ActiveDirectory Module)
 
 Getdomain SID for the current domain
 Get-DomainSID (PowerView)
+
 (Get-ADDomain).DomainSID (ActiveDirectory Module)
 
 Get domain policy for the current domain:
@@ -21,24 +24,42 @@ Get domain policy for another domain:
 
 Get domain controllers for the current domain:
 Get-NetDomainController(PowerView)
+
 Get-ADDomainController(ActiveDirectory Module)
 
 Get domain controllers for another domain
 Get-NetDomainController -Domain moneycorp.local(PowerView)
+
 Get-ADDomainController -DomainName moneycorp.local -Discover(ActiveDirectory Module)
 
 Get a list of users in the current domain:
 Get-NetUser (PowerView)
 Get-NetUser -Username student1 (PowerView)
+
 Get-ADUser -Filter * -Properties * (ActiveDirectory Module)
 Get-ADUser -Identity student1 Properties * (ActiveDirectory Module)
 
 Get list of all properties for users in the current domain:
 Get-UserProperty (PowerView)
 Get-UserProperty -Properties pwdlastset (PowerView)
-Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select Name (ActiveDirectory Module)
-Get-ADUser -Filter * -Properties *| select name,@{expression={[datetime]::fromFileTime ($_ .pwdlastset)}} (ActiveDirectory Module)
 
+Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select Name (ActiveDirectory Module)
+Get-ADUser -Filter * -Properties *| select name,@ {expression={[datetime]::fromFileTime ($_ .pwdlastset)}} (ActiveDirectory Module)
+
+Search for a particular string in a user's attributes:
+Find-UserField -SearchField Description -SearchTerm "built" (PowerView)
+Get-ADUser -Filter 'Description -like "*built*"' -Properties Description | select name, Description (ActiveDirectory Module)
+
+Get a list of computers in the current domain:
+Get-NetComputer (PowerView)
+Get-NetComputer -OperatingSystem "*Server 2016*" (PowerView)
+Get-NetComputer -Ping (PowerView)
+Get-NetComputer -FullData (PowerView)
+
+Get-ADComputer -Filter * | select Name (ActiveDirectory Module)
+Get-ADComputer -Filter 'OperatingSystem -like "*Server 2016*"' -Properties OperatingSystem | select Name, OperatingSystem (ActiveDirectory Module)
+Get-ADComputer -Filter * -Properties DNSHostName | %{Test-Connection -Count 1 -ComputerName $_DNSHostName} (ActiveDirectory Module)
+Get-ADComputer -Filter * -Properties * (ActiveDirectory Module)
 
 To bypass windows AMSI:
 
