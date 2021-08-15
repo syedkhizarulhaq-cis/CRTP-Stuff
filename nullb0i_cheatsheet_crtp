@@ -1,7 +1,7 @@
 ###Enumeration
 
 To Get current domain: 
-GetNetDomain (PowerView)
+Get-NetDomain (PowerView)
 Get-ADDomain (ActiveDirectory Module)
 
 Get object of another domain
@@ -9,8 +9,35 @@ Get-NetDomain -Domain moneycorp.local (PowerView)
 Get-ADDomain -Identity moneycorp.local (ActiveDirectory Module)
 
 Getdomain SID for the current domain
-GetDomainSID (PowerView)
+Get-DomainSID (PowerView)
 (Get-ADDomain).DomainSID (ActiveDirectory Module)
+
+Get domain policy for the current domain:
+Get-DomainPolicy (PowerView)
+(Get-DomainPolicy)."system access" (PowerView)
+
+Get domain policy for another domain:
+(Get DomainPolicy domain moneycorp.local)."system access" (PowerView)
+
+Get domain controllers for the current domain:
+Get-NetDomainController(PowerView)
+Get-ADDomainController(ActiveDirectory Module)
+
+Get domain controllers for another domain
+Get-NetDomainController -Domain moneycorp.local(PowerView)
+Get-ADDomainController -DomainName moneycorp.local -Discover(ActiveDirectory Module)
+
+Get a list of users in the current domain:
+Get-NetUser (PowerView)
+Get-NetUser -Username student1 (PowerView)
+Get-ADUser -Filter * -Properties * (ActiveDirectory Module)
+Get-ADUser -Identity student1 Properties * (ActiveDirectory Module)
+
+Get list of all properties for users in the current domain:
+Get-UserProperty (PowerView)
+Get-UserProperty -Properties pwdlastset (PowerView)
+Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select Name (ActiveDirectory Module)
+Get-ADUser -Filter * -Properties *| select name,@{expression={[datetime]::fromFileTime ($_ .pwdlastset)}} (ActiveDirectory Module)
 
 
 To bypass windows AMSI:
