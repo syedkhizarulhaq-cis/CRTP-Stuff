@@ -61,6 +61,21 @@ Get-ADComputer -Filter 'OperatingSystem -like "*Server 2016*"' -Properties Opera
 Get-ADComputer -Filter * -Properties DNSHostName | %{Test-Connection -Count 1 -ComputerName $_DNSHostName} (ActiveDirectory Module)
 Get-ADComputer -Filter * -Properties * (ActiveDirectory Module)
 
+Get all the groups in the current domain:
+Get-NetGroup (PowerView)
+Get-NetGroup -Domain targetdomain (PowerView)
+Get-NetGroup -FullData (PowerView)
+
+Get-ADGroup -Filter * | select Name (ActiveDirectory Module)
+Get-ADGroup -Filter * -Properties * (ActiveDirectory Module)
+
+Get all groups containing the word "admin" in group name:
+Get-NetGroup *admin* (PowerView)
+
+Get-ADGroup -Filter 'Name like "*admin*"' | select Name (ActiveDirectory Module)
+
+
+
 To bypass windows AMSI:
 
 powershell -ep bypass
